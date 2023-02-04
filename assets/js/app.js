@@ -17,7 +17,7 @@ const dayFive = document.querySelector('.day-5');
 // // Get the latitude and longitude of the city
     function getLatitudeAndLongitude() {
         let cityId = document.querySelector('#tags').value;
-        fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${cityId} &appid=843f058e4044327330ceeb93cf7b413a`)
+        fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${cityId} &appid=843f058e4044327330ceeb93cf7b413a`)
             .then(function (response) {
                 return response.json();
             })
