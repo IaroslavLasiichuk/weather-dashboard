@@ -26,36 +26,41 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-4 p-4 ">
-                <section>
+            <div class="col-4 p-3 justify-content-start">
+                <div class="mb-3">
                     <h3>Search for a city:</h3>
-                    <input id="tags" class="city" placeholder="Enter city" value="">
-                    <button class="btn btn-dark m-3">Search</button>
-                </section>
-               
-                <section>
-                    <ul class="list-group">
-
-                    </ul>
-                </section>
-               
+                    <input id="tags" type="text" class="form-control city" placeholder="Enter city">
+                </div>
+                <div class="d-grid gap-2 col-12 mx-auto">
+                    <button class="btn btn-dark" type="button">Search</button>
+                </div>
+                <hr>
+                <ul class="list-group text-center ">
+                </ul>
             </div>
 
             <!-- Shows current city -->
-            <div class="col-8 p-4">
-                <section class="show-current-city">
+            <div class="col-8 p-4 ">
+                <section class="show-current-city text-dark p-3">
                     <h3 class="city-name"></h3>
                     <img class="icon" src="" alt="">
                     <p class="temp"></p>
                     <p class="humidity"></p>
                     <p class="wind"></p>
                 </section>
-                <section class="row">
-                    <div class="col-2">Day 1</div>
-                    <div class="col-2">Day 2</div>
-                    <div class="col-2">Day 3</div>
-                    <div class="col-2">Day 4</div>
-                    <div class="col-2">Day 5</div> 
+
+                <section class="row p-3">
+                    <div class="col-2 day-1">
+                    </div>
+                    <div class="col-2 day-2">
+                    </div>
+                    <div class="col-2 day-3">
+                    </div>
+                    <div class="col-2 day-4">
+                    </div>
+                    <div class="col-2 day-5">
+
+                    </div>
                 </section>
             </div>
         </div>
@@ -64,4 +69,5 @@
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
     <script>dayjs().format()</script>
 </body>
+
 </html>
