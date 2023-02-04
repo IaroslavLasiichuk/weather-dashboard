@@ -17,7 +17,7 @@ const dayFive = document.querySelector('.day-5');
 // // Get the latitude and longitude of the city
     function getLatitudeAndLongitude() {
         let cityId = document.querySelector('#tags').value;
-        fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${cityId} &appid=843f058e4044327330ceeb93cf7b413a`)
+        fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${cityId} &appid=843f058e4044327330ceeb93cf7b413a`)
             .then(function (response) {
                 return response.json();
             })
@@ -35,7 +35,7 @@ function getWeather(city) {
     let cityId = document.querySelector('#tags').value;
     let getLatitude = localStorage.getItem(`${cityId} lat`);
     let getLongitude = localStorage.getItem(`${cityId} lon`);
-    fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${getLatitude}&lon=${getLongitude}&appid=843f058e4044327330ceeb93cf7b413a&units=imperial`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${getLatitude}&lon=${getLongitude}&appid=843f058e4044327330ceeb93cf7b413a&units=imperial`)
         .then(function (response) {
             return response.json();
         })
@@ -52,7 +52,7 @@ function getWeather(city) {
             console.log(localStorage.getItem('name'));
             let setNameToLocalStorage = localStorage.setItem('name', data.name)
             list.textContent = localStorage.getItem('name');
-            fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${getLatitude}&lon=${getLongitude}&appid=843f058e4044327330ceeb93cf7b413a&units=imperial`)
+            fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${getLatitude}&lon=${getLongitude}&appid=843f058e4044327330ceeb93cf7b413a&units=imperial`)
                 .then(function (response) {
                     return response.json()
                         .then(function (data) {
