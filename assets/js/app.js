@@ -9,7 +9,6 @@ const dayFour = document.querySelector('.day-4');
 const dayFive = document.querySelector('.day-5');
 const keyApi = 'a9e9a4caf387b979bb5c239fbceb489a';
 const apiUrl = 'https://api.openweathermap.org/data/2.5';
-const input = document.getElementById('#tags');
 
 // Get weather
 function getWeather() {
@@ -18,9 +17,12 @@ function getWeather() {
         .then(function(response){
             return response.json()
         })
-        .then(function(data){
+        .then(function (data) {
+            showCurrent.style.background = '#1986e6';
+            showCurrent.style.opacity = '.7';
+            showCurrent.style.borderRadius = '10px';
             showCurrent.innerHTML = `<p>${data.name} ${dayjs().format('MM/DD/YYYY')}<p/>
-                    <img src="http://openweathermap.org/img/wn/${data.weather[0].icon}.png" alt=""> 
+                    <img  class ="icon" src="http://openweathermap.org/img/wn/${data.weather[0].icon}.png" alt=""> 
                     <p> ${'Temp:'} ${data.main.temp} <p>
                     <p> ${'Humidity:'} ${data.main.humidity}</p>
                     <p>  ${'Wind:'} ${data.wind.speed}</p>`
@@ -35,33 +37,36 @@ function getWeather() {
                                 for (i = 0; i < array.length; i = i + 8) {
                                     arr.push(array[i]);
                                 }
+                                document.querySelector('.five-days').style.background = '#1986e6';
+                                document.querySelector('.five-days').style.opacity = '.7';
+                                document.querySelector('.five-days').style.borderRadius = '10px';
                                 dayOne.innerHTML =
                                     `
-                                    <p>${dayjs().add(1, 'day').format('MM/DD/YYYY')}</p>
+                                    <p>${dayjs().add(1, 'day').format('MM/DD/YY')}</p>
                     <img src="http://openweathermap.org/img/wn/${array[0].weather[0].icon}.png" alt=""> 
                     <p> ${'Temp:'} ${array[0].main.temp} <p>
                     <p> ${'Humidity:'} ${array[0].main.humidity}</p>
                     <p>  ${'Wind:'} ${array[0].wind.speed}</p>`;
                                 dayTwo.innerHTML =
-                                    `<p>${dayjs().add(2, 'day').format('MM/DD/YYYY')}</p>
+                                    `<p>${dayjs().add(2, 'day').format('MM/DD/YY')}</p>
                                     <img src="http://openweathermap.org/img/wn/${array[1].weather[0].icon}.png" alt=""> 
                     <p> ${'Temp:'} ${array[1].main.temp} <p>
                     <p> ${'Humidity:'} ${array[1].main.humidity}</p>
                     <p>  ${'Wind:'} ${array[1].wind.speed}</p>`;
                                 dayThree.innerHTML =
-                                    `<p>${dayjs().add(3, 'day').format('MM/DD/YYYY')}</p>
+                                    `<p>${dayjs().add(3, 'day').format('MM/DD/YY')}</p>
                                     <img src="http://openweathermap.org/img/wn/${array[2].weather[0].icon}.png" alt=""> 
                     <p> ${'Temp:'} ${array[2].main.temp} <p>
                     <p> ${'Humidity:'} ${array[2].main.humidity}</p>
                     <p>  ${'Wind:'} ${array[2].wind.speed}</p>`;
                                 dayFour.innerHTML =
-                                    `<p>${dayjs().add(4, 'day').format('MM/DD/YYYY')}</p>
+                                    `<p>${dayjs().add(4, 'day').format('MM/DD/YY')}</p>
                                     <img src="http://openweathermap.org/img/wn/${array[3].weather[0].icon}.png" alt=""> 
                     <p> ${'Temp:'} ${array[3].main.temp} <p>
                     <p> ${'Humidity:'} ${array[3].main.humidity}</p>
                     <p> ${'Wind:'} ${array[3].wind.speed}</p>`;
                                 dayFive.innerHTML =
-                                    `<p>${dayjs().add(5, 'day').format('MM/DD/YYYY')}</p>
+                                    `<p>${dayjs().add(5, 'day').format('MM/DD/YY')}</p>
                                     <img src="http://openweathermap.org/img/wn/${array[4].weather[0].icon}.png" alt=""> 
                     <p> ${'Temp:'} ${array[4].main.temp} <p>
                     <p> ${'Humidity:'} ${array[4].main.humidity}</p>
@@ -78,6 +83,7 @@ function addText() {
     <h3>5Day forecast</h3>
     `
 }
+
  // Get the latitude and longitude of the city
 function getLatitudeAndLongitude(name) {
     let cityName = name.length ? name : document.querySelector('#tags').value;
