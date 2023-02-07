@@ -19,8 +19,9 @@ Click the search button to view the current and future weather conditions for th
 The city will be added to the search history, allowing you to easily access it in the future.
 Click on a city in the search history to view its current and future weather conditions.
 
-## Testing
-You can also refer to source code to test it [Source code](https://iaroslavlasiichuk.github.io/weather-dashboard/).
+## Link 
+Link for a source code: 
+[CLICK](https://iaroslavlasiichuk.github.io/weather-dashboard/)
 
 ## Conclusion
 With this weather dashboard, you can easily plan your trips by staying informed about the weather conditions of multiple cities. Happy travels!

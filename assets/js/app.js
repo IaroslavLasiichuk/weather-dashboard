@@ -8,26 +8,25 @@ const dayThree = document.querySelector('.day-3');
 const dayFour = document.querySelector('.day-4');
 const dayFive = document.querySelector('.day-5');
 const keyApi = 'a9e9a4caf387b979bb5c239fbceb489a';
+const apiUrl = 'https://api.openweathermap.org/data/2.5';
+const input = document.getElementById('#tags');
 
 // Get weather
 function getWeather() {
     const city = JSON.parse(localStorage.getItem('coords'));
-    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${city.lat}&lon=${city.long}&appid=a9e9a4caf387b979bb5c239fbceb489a&units=imperial`)
-        .then( (response) => {
-            return response.json();
+    fetch(`${apiUrl}/weather?lat=${city.lat}&lon=${city.long}&appid=${keyApi}&units=imperial`)
+        .then(function(response){
+            return response.json()
         })
-        .then((data) => {
-            console.log(data);
+        .then(function(data){
             showCurrent.innerHTML = `<p>${data.name} ${dayjs().format('MM/DD/YYYY')}<p/>
                     <img src="http://openweathermap.org/img/wn/${data.weather[0].icon}.png" alt=""> 
                     <p> ${'Temp:'} ${data.main.temp} <p>
                     <p> ${'Humidity:'} ${data.main.humidity}</p>
                     <p>  ${'Wind:'} ${data.wind.speed}</p>`
-                  
-
 // 5 days forecast
-            fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${city.lat}&lon=${city.long}&appid=a9e9a4caf387b979bb5c239fbceb489a&units=imperial`)
-                .then(function (response) {
+            fetch(`${apiUrl}/forecast?lat=${city.lat}&lon=${city.long}&appid=${keyApi}&units=imperial`)
+                .then(function(response) {
                     return response.json()
                         .then(function (data) {
                             data.list.every(myFunction);
@@ -36,9 +35,9 @@ function getWeather() {
                                 for (i = 0; i < array.length; i = i + 8) {
                                     arr.push(array[i]);
                                 }
-                                document.querySelector('.hide').classList.remove('hide');
                                 dayOne.innerHTML =
-                                    `<p>${dayjs().add(1, 'day').format('MM/DD/YYYY')}</p>
+                                    `
+                                    <p>${dayjs().add(1, 'day').format('MM/DD/YYYY')}</p>
                     <img src="http://openweathermap.org/img/wn/${array[0].weather[0].icon}.png" alt=""> 
                     <p> ${'Temp:'} ${array[0].main.temp} <p>
                     <p> ${'Humidity:'} ${array[0].main.humidity}</p>
@@ -68,15 +67,21 @@ function getWeather() {
                     <p> ${'Humidity:'} ${array[4].main.humidity}</p>
                     <p>  ${'Wind:'} ${array[4].wind.speed}</p>`;
                             }
-                        })
+                        }) 
                 })
         })
+    addText();
 }
-
+// Shows text above 5day forecast
+function addText() {
+    document.querySelector('.text').innerHTML = `
+    <h3>5Day forecast</h3>
+    `
+}
  // Get the latitude and longitude of the city
 function getLatitudeAndLongitude(name) {
     let cityName = name.length ? name : document.querySelector('#tags').value;
-    fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&appid=a9e9a4caf387b979bb5c239fbceb489a`)
+    fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&appid=${keyApi}`)
         .then(function (response) {
             return response.json();
         })
@@ -87,35 +92,36 @@ function getLatitudeAndLongitude(name) {
             }
             localStorage.clear()
             localStorage.setItem('coords', JSON.stringify({ lat: `${data[0].lat}`, long: `${data[0].lon}`, name: cityName }));
-            getWeather()
-            createButton()
+            getWeather();
+            createButton();
         })
 }
-function getLatitudeAndLongitude1(name) {
+// Show weather clicking on a button.
+function showWeatherClickingOnButton(name) {
     let cityName = name.length ? name : document.querySelector('#tags').value;
-    fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&appid=a9e9a4caf387b979bb5c239fbceb489a`)
+    fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&appid=${keyApi}`)
         .then(function (response) {
             return response.json();
         })
         .then(function (data) {
             if (!data.length) {
+                testResult.style.border = "1px solid red";
                 alert('City not found!')
                 return
             }
-            localStorage.clear()
+            localStorage.clear();
             localStorage.setItem('coords', JSON.stringify({ lat: `${data[0].lat}`, long: `${data[0].lon}`, name: cityName }));
-            getWeather()
+            getWeather();
         })
 }
+// Create a new city button.
 function createButton() {
     const city = JSON.parse(localStorage.getItem('coords'));
-    console.log(city)
-    fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${city.lat}&lon=${city.long}&appid=a9e9a4caf387b979bb5c239fbceb489a&units=imperial`)
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${city.lat}&lon=${city.long}&appid=${keyApi}&units=imperial`)
     .then(function (response) {
         return response.json()
             .then(function (data) {
                     let list = document.createElement('button');
-                    console.log(city.name);
                     list.classList.add('btn', 'bg-primary', 'text-light', 'mt-2', 'btn-city');
                     list.setAttribute('data-city', city.name);
                     searchList.append(list);
@@ -124,9 +130,9 @@ function createButton() {
     })
 }
 
-searchBtn.addEventListener('click', getLatitudeAndLongitude); 
-
+// Adds event listeners to the search list.
 searchList.addEventListener('click', function (event) {
     let dataFromButton = event.target.getAttribute('data-city');
-    getLatitudeAndLongitude1(dataFromButton);
+    showWeatherClickingOnButton(dataFromButton);
 })
+searchBtn.addEventListener('click', getLatitudeAndLongitude); 

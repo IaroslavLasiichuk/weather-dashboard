@@ -9,8 +9,6 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="/resources/demos/style.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
@@ -23,7 +21,7 @@
     <header class="flex bg-dark h-100 p-2">
         <h1 class="text-center text-light">Weather Dashboard</h1>
     </header>
-
+    <!-- Header and search for a city -->
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-4 p-3 justify-content-start">
@@ -38,15 +36,14 @@
                 <ul class="list-group text-center ">
                 </ul>
             </div>
-
             <!-- Shows current city -->
             <div class="col-md-8 p-4 ">
                 <section class="show-current-city text-dark p-3">
-                   
                 </section>
-
+                <!-- Displays text -->
+                <section class="text"></section>
+                <!-- Shows %Day forecast -->
                 <section class="five-days row p-3">
-                    <h3 class="hide">5Day forecast</h3>
                     <div class="col-md-2 col-sm-2 day-1">
                     </div>
                     <div class="col-md-2 col-sm-2 day-2">
