@@ -37,9 +37,6 @@ function getWeather() {
                                 for (i = 0; i < array.length; i = i + 8) {
                                     arr.push(array[i]);
                                 }
-                                document.querySelector('.five-days').style.background = '#1986e6';
-                                document.querySelector('.five-days').style.opacity = '.7';
-                                document.querySelector('.five-days').style.borderRadius = '10px';
                                 dayOne.innerHTML =
                                     `
                                     <p>${dayjs().add(1, 'day').format('MM/DD/YY')}</p>
@@ -120,7 +117,7 @@ function showWeatherClickingOnButton(name) {
             getWeather();
         })
 }
-// Create a new city button.
+// Create a new city button
 function createButton() {
     const city = JSON.parse(localStorage.getItem('coords'));
     fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${city.lat}&lon=${city.long}&appid=${keyApi}&units=imperial`)

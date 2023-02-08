@@ -11,7 +11,7 @@ As a traveler, it is important to be informed about the weather conditions of th
 ## Mock-up
 The following image shows the web application's appearance and functionality:
 
-![The weather app includes a search option, a list of cities, and a five-day forecast and current weather conditions for Atlanta.](./assets/img/weather_dashboard_screenshot.html.png)
+![The weather app includes a search option, a list of cities, and a five-day forecast and current weather conditions for Atlanta.](./assets/img/screenshot.png)
 ## How to Use
 Open the weather dashboard.
 Enter the name of the city you want to search for in the form input.
@@ -20,7 +20,7 @@ The city will be added to the search history, allowing you to easily access it i
 Click on a city in the search history to view its current and future weather conditions.
 
 ## Link 
-Link for a source code: 
+Link for a source code
 [CLICK](https://iaroslavlasiichuk.github.io/weather-dashboard/)
 
 ## Conclusion

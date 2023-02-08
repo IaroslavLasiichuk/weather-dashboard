@@ -1,10 +1,18 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     color: black;
 }
-.icon{
+
+.icon {
     width: 100px;
     height: 100px;
+}
+
+.day-1, .day-2, .day-3, .day-4, .day-5 {
+    background-color: #1986e6;
+    opacity: .7;
+    border-radius: 10px;
+    margin: 10px;
 }
